@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我们的回忆</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            flex-direction: column;
+        }
+        .message {
+            color: pink;
+            font-size: 4em;
+            text-align: center;
+            position: absolute;
+            top: 40%;
+        }
+        .message1 {
+            color: pink;
+            font-size: 6em;
+            text-align: center;
+            position: absolute;
+            top: 40%;
+        }
+        .image-container {
+            display: none;
+            position: absolute;
+            transition: opacity 1s, transform 1s;
+            text-align: center;
+        }
+        .media-container {
+            display: none;
+            position: absolute;
+            transition: opacity 1s, transform 1s;
+            text-align: center;
+        }
+        .media-container img, .media-container video {
+            max-width: 100%;
+            max-height: 70vh;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+        .slide-out {
+            transform: translateX(100%);
+        }
+        .scale-out {
+            transform: scale(0);
+        }
+        .show {
+            display: block;
+        }
+        .description {
+            margin-top: 10px;
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+
+<div class="message" id="message1">我们的王者回忆</div>
+<div class="media-container" id="media1">
+    <img src="img/1.jpg" alt="Image 1">
+    <div class="description">我们从姐弟开始啦</div>
+</div>
+<div class="media-container" id="media2">
+    <img src="img/2.jpg" alt="Image 2">
+    <div class="description">努力带宝宝打金标</div>
+</div>
+<div class="media-container" id="media3">
+    <img src="img/3.jpg" alt="Image 2">
+    <div class="description">虽然好像不靠我也拿到金标了（？）</div>
+</div>
+<div class="media-container" id="media4">
+    <img src="img/4.jpg" alt="Image 2">
+    <div class="description">马瑶贴贴</div>
+</div>
+<div class="media-container" id="media5">
+    <img src="img/5.jpg" alt="Image 2">
+    <div class="description">西施、熬隐贴贴</div>
+</div>
+<div class="media-container" id="media6">
+    <img src="img/6.jpg" alt="Image 2">
+    <div class="description">老夫子、蔡文姬贴贴</div>
+</div>
+<div class="media-container" id="media7">
+    <img src="img/7.jpg" alt="Image 2">
+    <div class="description">敲好看的情书，是520</div>
+</div>
+<div class="media-container" id="media8">
+    <img src="img/8.jpg" alt="Image 2">
+    <div class="description">可惜没有时间拿到称号</div>
+</div>
+<div class="media-container" id="media9">
+    <img src="img/9.jpg" alt="Image 2">
+    <div class="description">我们是情侣啦！（没找到绑关系的原图，我道歉）</div>
+</div>
+<div class="message" id="message2">我们一起斩获的五杀</div>
+<div class="media-container" id="media10">
+    <video width="800" height="640" controls>
+        <source src="video/1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+</div>
+<div class="media-container" id="media11">
+    <video width="800" height="640" controls>
+        <source src="video/2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+</div>
+<div class="media-container" id="media12">
+    <video width="800" height="640" controls>
+        <source src="video/3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+</div>
+<div class="media-container" id="media13">
+    <video width="800" height="640" controls>
+        <source src="video/4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+</div>
+<div class="message" id="message3">我们的原神回忆</div>
+<div class="media-container" id="media14">
+    <img src="img/20.jpg" alt="Image 1">
+    <div class="description">爱心biubiu箭</div>
+</div>
+<div class="media-container" id="media15">
+    <img src="img/21.jpg" alt="Image 2">
+    <div class="description">萝莉可爱捏~</div>
+</div>
+<div class="message1" id="message4">我们的故事刚刚开始……</div>
+
+<script>
+    const transitions = ['fade-out', 'slide-out', 'scale-out'];
+
+    function showElement(id) {
+        document.getElementById(id).classList.add('show');
+    }
+    function showElement_text(id) {
+        document.getElementById(id).style.display = 'flex';
+    }
+
+    function hideElement(id) {
+        document.getElementById(id).style.display = 'none';
+    }
+
+    function applyTransition(id, transition) {
+        document.getElementById(id).classList.add(transition);
+        setTimeout(() => {
+            hideElement(id);
+            document.getElementById(id).classList.remove(transition);
+        }, 1000);
+    }
+
+    function displaySequence() {
+        setTimeout(() => {
+            hideElement('message1');
+            showElement('media1');
+        }, 2000);
+        
+        setTimeout(() => {
+            applyTransition('media1', transitions[0]);
+            showElement('media2');
+        }, 4000);
+
+        setTimeout(() => {
+            applyTransition('media2', transitions[1]);
+            showElement('media3');
+        }, 6000);
+
+        setTimeout(() => {
+            applyTransition('media3', transitions[2]);
+            showElement('media4');
+        }, 8000);
+
+        setTimeout(() => {
+            applyTransition('media4', transitions[0]);
+            showElement('media5');
+        }, 10000);
+
+        setTimeout(() => {
+            applyTransition('media5', transitions[1]);
+            showElement('media6');
+        }, 12000);
+
+        setTimeout(() => {
+            applyTransition('media6', transitions[2]);
+            showElement('media7');
+        }, 14000);
+
+        setTimeout(() => {
+            applyTransition('media7', transitions[0]);
+            showElement('media8');
+        }, 16000);
+
+        setTimeout(() => {
+            applyTransition('media8', transitions[1]);
+            showElement('media9');
+        }, 18000);
+
+        setTimeout(() => {
+            applyTransition('media9', transitions[2]);
+            showElement_text('message2');
+        }, 20000);
+
+        setTimeout(() => {
+            hideElement('message2');
+            showElement('media10');
+        }, 22000);
+
+        setTimeout(() => {
+            applyTransition('media10', transitions[0]);
+            showElement('media11');
+        }, 47000);
+
+        setTimeout(() => {
+            applyTransition('media11', transitions[1]);
+            showElement('media12');
+        }, 87000);
+
+        setTimeout(() => {
+            applyTransition('media12', transitions[2]);
+            showElement('media13');
+        }, 127000);
+
+        setTimeout(() => {
+            applyTransition('media13', transitions[0]);
+            showElement_text('message3');
+        }, 170000);
+
+        setTimeout(() => {
+            hideElement('message3');
+            showElement('media14');
+        }, 173000);
+
+        setTimeout(() => {
+            applyTransition('media14', transitions[1]);
+            showElement('media15');
+        }, 176000);
+
+        setTimeout(() => {
+            applyTransition('media15', transitions[2]);
+            showElement_text('message4');
+        }, 180000);
+
+        setTimeout(() => {
+            hideElement('message4');
+            window.location.href = 'qixi.html';
+        }, 182000);
+    }
+    hideElement('message1');
+    hideElement('message2');
+    hideElement('message3');
+    hideElement('message4');
+    showElement_text('message1');
+    displaySequence();
+</script>
+
+</body>
+</html>
